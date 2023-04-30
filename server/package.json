@@ -1,21 +1,13 @@
 {
-  "name": "node_js",
+  "name": "server",
   "version": "1.0.0",
   "description": "server-client",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DocNITE/nodejs-website-test.git"
+    "start": "node index.js"
   },
   "author": "DocNITE",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DocNITE/nodejs-website-test/issues"
-  },
-  "homepage": "https://github.com/DocNITE/nodejs-website-test#readme",
   "dependencies": {
     "express": "^4.18.2",
     "socket.io": "^4.6.1"
