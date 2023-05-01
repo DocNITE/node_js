@@ -1,5 +1,6 @@
 import * as PIXI from './src/pixi.mjs'
-
+import {damsdsd} from './sharedTest.js'
+console.log(damsdsd);
 /**
  * Крч слушай
  веб разработка - это та еще ебанина
@@ -34,7 +35,7 @@ graphics.endFill();
 app.stage.addChild(graphics);
 
 app.ticker.add((delta) => {
-    console.log(delta);
+    //console.log(delta);
 });
 
 let socket = io();
