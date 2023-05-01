@@ -4,13 +4,12 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-const config = require('./../config.json');
 
 // path for initialize static files
 const clientPath = __dirname + '/../client';
 app.use(express.static(clientPath));
-//const sharedPath = __dirname + '/../shared';
-//app.use(express.static(sharedPath));
+const sharedPath = __dirname + '/../shared';
+app.use(express.static(sharedPath));
 // send html page (client scripts) for user
 app.get('/', (req, res) => {
   res.sendFile(clientPath + '/index.html');
