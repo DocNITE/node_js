@@ -25,10 +25,10 @@ io.on('connection', (socket) => {
   });
   // Get message from client
   socket.on('sync', (data) => {
-    console.log(data.toString());
+
   })
   // send test message to all clients fucKYYEYE YYEYYE Y
-  io.emit('sync', {fuck: "ну и как член на вкус?", fuck2: 1});
+  io.emit('sync', "none"); //{fuck: "ну и как член на вкус?", fuck2: 1}
 });
 // start server bruh
 server.listen(5500, () => {

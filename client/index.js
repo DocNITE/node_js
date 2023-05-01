@@ -40,7 +40,7 @@ app.ticker.add((delta) => {
 let socket = io();
 
 socket.on('sync', (data) => {
-    console.log(data.fuck); // вывведе 'ну икак член на вкус' что я прописал со сервера
+    console.log(data); 
     socket.emit('sync', data);
 })
 
