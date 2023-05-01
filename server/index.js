@@ -4,24 +4,33 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const config = require('./../config.json');
 
-//app.set('view engine', 'ejs');
+// path for initialize static files
 const clientPath = __dirname + '/../client';
 app.use(express.static(clientPath));
-
+//const sharedPath = __dirname + '/../shared';
+//app.use(express.static(sharedPath));
+// send html page (client scripts) for user
 app.get('/', (req, res) => {
   res.sendFile(clientPath + '/index.html');
 });
-
+// used, when user was connected
+//let users = {};
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  // //users.push({socket: socket, id: users.length})
+  console.log('Connected user: ' + socket.id);
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    console.log('Disconnected user: ' + socket.id);
   });
-  socket.on('sync', (msg) => console.log(msg))
-  io.emit('sync', "synch on all clients");
+  // Get message from client
+  socket.on('sync', (data) => {
+    console.log(data.toString());
+  })
+  // send test message to all clients fucKYYEYE YYEYYE Y
+  io.emit('sync', {fuck: "ну и как член на вкус?", fuck2: 1});
 });
-
+// start server bruh
 server.listen(5500, () => {
   console.log(`Server running at http://localhost:${5500}/`);
 });
