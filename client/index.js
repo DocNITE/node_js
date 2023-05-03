@@ -1,6 +1,7 @@
 import * as PIXI from './src/pixi.mjs'
-import {damsdsd} from './sharedTest.js'
-console.log(damsdsd);
+import wallsAtlas from './images/walls.json' assert {type: "json"};
+//import {damsdsd} from './sharedTest.js'
+//console.log(damsdsd);
 /**
  * Крч слушай
  веб разработка - это та еще ебанина
@@ -25,14 +26,34 @@ console.log(damsdsd);
 let app = new PIXI.Application({ resizeTo: window });
 document.body.appendChild(app.view);
 
-const graphics = new PIXI.Graphics();
+/*
+const app = new PIXI.Application({
+  width: canvasWidth,
+  height: canvasHeight,
+  backgroundColor: 0x1099bb,
+  resolution: 2 * window.devicePixelRatio,
+});
+ */
 
-// Rectangle
-graphics.beginFill(0xDE3249);
-graphics.drawRect(0, 0, 100, 100);
-graphics.endFill();
+const spritesheet = new PIXI.Spritesheet(
+	PIXI.BaseTexture.from(wallsAtlas.meta.image),
+	wallsAtlas
+);
 
-app.stage.addChild(graphics);
+// Generate all the Textures asynchronously
+await spritesheet.parse();
+
+// spritesheet is ready to use!
+const anim = new PIXI.AnimatedSprite(spritesheet.animations.wall);
+
+// set the animation speed 
+anim.animationSpeed = 0.1666;
+
+// play the animation on a loop
+anim.play();
+
+// add it to the stage to render
+app.stage.addChild(anim);
 
 app.ticker.add((delta) => {
     //console.log(delta);

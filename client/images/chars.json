@@ -1,0 +1,33 @@
+{
+    "frames": {
+		"man_backward": {
+			"frame": { "x": 0, "y":32, "w":32, "h":32 },
+			"sourceSize": { "w": 32, "h": 32 },
+			"spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+		},
+		"man_forward": {
+			"frame": { "x": 32, "y":32, "w":32, "h":32 },
+			"sourceSize": { "w": 32, "h": 32 },
+			"spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+		},
+		"man_right": {
+			"frame": { "x": 0, "y":64, "w":32, "h":32 },
+			"sourceSize": { "w": 32, "h": 32 },
+			"spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+		},
+		"man_left": {
+			"frame": { "x": 32, "y":64, "w":32, "h":32 },
+			"sourceSize": { "w": 32, "h": 32 },
+			"spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 }
+		}
+	},
+	"meta": {
+		"image": "images/chars.png",
+		"format": "RGBA8888",
+		"size": { "w": 256, "h": 256 },
+		"scale": 2
+	},
+	"animations": {
+		"char": ["man_forward", "man_backward", "man_left", "man_right"] 
+	}
+}
