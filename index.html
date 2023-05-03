@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+	<TITLE>CoreEngine222</TITLE>
+	<LINK rel="icon" type="image/x-icon" href="DATA/TEXTURE/FAVICON.PNG">
+	<LINK rel="stylesheet" href="default.css">
+	<meta charset="utf-8">
+</HEAD>
+<BODY>
+    <div id="list" class="list">
+        <div>
+            <label><font color="green"> Welcome to chat by me!.</font></label>
+        </div>
+        <div>
+            <label>Chat msg 2</label>
+        </div>
+    </div>
+    <input type="text" id="name" name="name" required
+       minlength="1" maxlength="256" size="64">
+    <script>
+        for (let index = 0; index < 60; index++) {
+            let nElem = document.createElement("div");
+            let nFont = document.createElement("font");
+            nElem.appendChild(nFont);
+            nFont.color = "white";
+            let content = document.createTextNode("some cont " + index);
+                nFont.appendChild(content);
+            document.getElementById("list").appendChild(nElem);
+        }
+    </script>
+</BODY>
+</HTML>
