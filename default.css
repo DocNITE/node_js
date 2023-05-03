@@ -6,6 +6,11 @@ body {
 
 .list {
     height: 400px;
-    width: 640px;
+    width: 480px;
     overflow: auto;
+    border: solid rgba(255, 20, 243, 0.795);
 }
+
+.inputElem {
+    
+} 
