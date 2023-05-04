@@ -1,15 +1,62 @@
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
-	<TITLE>CoreEngine</TITLE>
+	<TITLE>CoreEngine - chat</TITLE>
 	<LINK rel="icon" type="image/x-icon" href="DATA/TEXTURE/FAVICON.PNG">
 	<LINK rel="stylesheet" href="/styles/default.css">
 	<meta charset="utf-8">
 </HEAD>
 <BODY>
-    <!--canvas id="canvas" width="200" height="200"></canvas-->
-    <!--       Main app enter      -->
+    <div id="list" class="list">
+    </div>
+    <div>
+        <font color="white" face="Monoscape"></font>
+        <input type="text" id="inputElem" class="inputElem" name="" required
+       minlength="1" maxlength="256" size="64" placeholder="Type text...">
+    </div>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/index.js" type="module"></script>
+    <script>
+        const CHAT_FONT = "Monospace";
+
+        function addMessage(text, color) {
+            let listElem = document.getElementById("list");
+            let nElem = document.createElement("div");
+            // add font and color
+            let nFont = document.createElement("font");
+            nFont.color = color;
+            nFont.face = CHAT_FONT
+            nElem.appendChild(nFont);
+            // text content
+            let content = document.createTextNode(text);
+            nFont.appendChild(content);
+            listElem.appendChild(nElem);
+            // swap to down
+            listElem.scrollTop = listElem.scrollHeight;
+        }
+
+        // init
+        addMessage("Добро пожаловать в чат by me!", "fuchsia");
+        addMessage("Чтобы написать сообщение - пиши в нижнее и нажимай 'enter'!",  "fuchsia");
+        //for (let index = 0; index < 2; index++) {
+        //    addMessage("index - " + index, "white");
+        //}
+
+        let socket = io();
+
+        socket.on('message', (data) => {
+            addMessage(data.msg, data.clr);
+        })
+
+        let inputElem = document.getElementById("inputElem");
+        inputElem.addEventListener("keydown", (ev) => {
+            if (ev.code != "Enter" || ev.target.value.length < 1)
+                return;
+
+            socket.emit('message', inputElem.value);
+            inputElem.value = "";
+        });
+
+
+    </script>
 </BODY>
 </HTML>

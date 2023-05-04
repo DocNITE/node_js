@@ -15,19 +15,19 @@ app.get('/', (req, res) => {
   res.sendFile(clientPath + '/index.html');
 });
 // used, when user was connected
-//let users = {};
 io.on('connection', (socket) => {
   // //users.push({socket: socket, id: users.length})
   console.log('Connected user: ' + socket.id);
   socket.on('disconnect', () => {
+    io.emit('message', { msg: `Пользователь ${socket.id} отключен...`, clr: "red" });
     console.log('Disconnected user: ' + socket.id);
   });
   // Get message from client
-  socket.on('sync', (data) => {
-
+  socket.on('message', (data) => {
+    io.emit('message', { msg: socket.id + ": " + data, clr: "white" });
   })
   // send test message to all clients fucKYYEYE YYEYYE Y
-  io.emit('sync', "none"); //{fuck: "ну и как член на вкус?", fuck2: 1}
+  io.emit('message', { msg: `Новый пользователь ${socket.id} подключен к чату!`, clr: "green" }); //{fuck: "ну и как член на вкус?", fuck2: 1}
 });
 // start server bruh
 server.listen(5500, () => {

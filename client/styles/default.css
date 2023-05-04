@@ -3,3 +3,14 @@ body {
     margin: 0%;
     padding: 0%;  
 }
+
+.list {
+    height: 400px;
+    width: 480px;
+    overflow: auto;
+    border: solid rgba(255, 20, 243, 0.795);
+}
+
+.inputElem {
+    
+} 
