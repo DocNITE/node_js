@@ -1,3 +1,5 @@
 {
-    "max_users": 16
+    "max_users": 16,
+    "discord_bot": true,
+    "discord_bot_token": "MTAzNzMzMDUyMDk3NzE5NTAxOA.GbWCWf.gBA2pABSeR_m3IESN8bVBZALGkhlyJ7w0kFCos" 
 }

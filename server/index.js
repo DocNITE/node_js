@@ -1,8 +1,17 @@
-const express = require('express');
+import config from './../shared/config.json' assert {type: "json"};
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io'
+import Discord from 'discord.js'
+// for __dirname
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+// some defines
 const app = express();
-const http = require('http');
 const server = http.createServer(app);
-const { Server } = require("socket.io");
 const io = new Server(server);
 
 // path for initialize static files
@@ -33,6 +42,23 @@ io.on('connection', (socket) => {
 server.listen(5500, () => {
   console.log(`Server running at http://localhost:${5500}/`);
 });
+
+// discord bot
+if (!config.discord_bot) return;
+
+const DiscordClient = new Discord.Client({ 
+  intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.DirectMessages] 
+});
+
+DiscordClient.on("ready", () => {
+  console.log(DiscordClient.user.tag + " was running!");
+});
+
+DiscordClient.on("messageCreate", (message) => {
+  //message.channel.send("Huh?");
+})
+
+DiscordClient.login(config.discord_bot_token);
 
 /*
 const http = require('http');
