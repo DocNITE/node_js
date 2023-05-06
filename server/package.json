@@ -4,7 +4,7 @@
   "description": "server-client",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "cd server && rimraf ./build && tsc",
     "start": "node index.js"
   },
   "author": "DocNITE",
