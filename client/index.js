@@ -1,5 +1,6 @@
 import * as PIXI from './src/pixi.mjs'
 import wallsAtlas from './images/walls.json' assert {type: "json"};
+import config from '/config.json' assert {type: "json"};
 //import {damsdsd} from './sharedTest.js'
 //console.log(damsdsd);
 /**
@@ -65,6 +66,8 @@ socket.on('sync', (data) => {
     console.log(data); 
     socket.emit('sync', data);
 })
+
+document.title = config.hostname;
 
 //const socket = new WebSocket("ws://127.0.0.1:5500");
 //

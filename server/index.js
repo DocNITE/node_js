@@ -39,27 +39,26 @@ io.on('connection', (socket) => {
   io.emit('sync', "none"); //{fuck: "ну и как член на вкус?", fuck2: 1}
 });
 // start server bruh
-server.listen(5500, () => {
-  console.log(`Server running at http://localhost:${5500}/`);
+server.listen(config.port, () => {
+  console.log(`Server running! Join at http://localhost:${config.port}/ for debug`);
 });
 
 // discord bot
-if (!config.discord_bot) return;
+if (config.discord_bot) {
+  const DiscordClient = new Discord.Client({ 
+    intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.DirectMessages] 
+  });
 
-const DiscordClient = new Discord.Client({ 
-  intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.DirectMessages] 
-});
+  DiscordClient.on("ready", () => {
+    console.log(DiscordClient.user.tag + " was running!");
+  });
 
-DiscordClient.on("ready", () => {
-  console.log(DiscordClient.user.tag + " was running!");
-});
+  DiscordClient.on("messageCreate", (message) => {
+    //message.channel.send("Huh?");
+  })
 
-DiscordClient.on("messageCreate", (message) => {
-  //message.channel.send("Huh?");
-})
-
-DiscordClient.login(config.discord_bot_token);
-
+  DiscordClient.login(config.discord_bot_token);
+}
 /*
 const http = require('http');
 const fs = require('fs');
