@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "commonjs",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "declaration": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "outDir": "./build",
+      "rootDir": "."
+    },
+    "include": ["server/src", "client/src", "shared/src", "server/webpack.config.js", "client/webpack.config.js"]
+  }

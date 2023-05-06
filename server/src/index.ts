@@ -1,14 +1,8 @@
-import config from './../shared/config.json' assert {type: "json"};
+import config from './../../shared/config.json';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io'
 import Discord from 'discord.js'
-// for __dirname
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 // some defines
 const app = express();
 const server = http.createServer(app);
@@ -17,8 +11,6 @@ const io = new Server(server);
 // path for initialize static files
 const clientPath = __dirname + '/../client';
 app.use(express.static(clientPath));
-const sharedPath = __dirname + '/../shared';
-app.use(express.static(sharedPath));
 // send html page (client scripts) for user
 app.get('/', (req, res) => {
   res.sendFile(clientPath + '/index.html');
