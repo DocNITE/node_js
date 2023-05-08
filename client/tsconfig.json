@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      "module": "esnext",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "sourceMap": true,
+      "declaration": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "outDir": "./build",
+      "rootDir": "."
+    },
+    "include": ["src", "webpack.config.js"],
+  }
+
+  // realizovat norm sborku
+  // Нужно либо разделить пространства на сервер и клиент (и шейред)
+  // или изъебнуться
