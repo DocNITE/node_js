@@ -4,8 +4,8 @@
   "description": "server-client",
   "main": "index.js",
   "scripts": {
-    "build": "cd server && rimraf ./build && tsc",
-    "start": "node index.js"
+    "build": "rimraf ./build && tsc",
+    "start": "node build/src/index.js"
   },
   "author": "DocNITE",
   "license": "ISC",

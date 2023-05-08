@@ -13,5 +13,9 @@
       "outDir": "./build",
       "rootDir": "."
     },
-    "include": ["server/src", "client/src", "shared/src", "client/webpack.config.js"]
+    "include": ["src"]
   }
+
+  // realizovat norm sborku
+  // Нужно либо разделить пространства на сервер и клиент (и шейред)
+  // или изъебнуться

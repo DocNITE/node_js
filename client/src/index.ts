@@ -2,7 +2,6 @@
 
 import * as PIXI from 'pixi.js';
 import wallsAtlas from './../images/walls.json';
-import config from './../../shared/config.json';
 import { io } from "socket.io-client";
 
 let app = new PIXI.Application<HTMLCanvasElement>({ resizeTo: window });
@@ -52,7 +51,9 @@ socket.on('sync', (data) => {
     socket.emit('sync', data);
 })
 
-document.title = config.hostname;
+socket.on('init', (data) => {
+    document.title = data.hostname;
+})
 
 //const socket = new WebSocket("ws://127.0.0.1:5500");
 //

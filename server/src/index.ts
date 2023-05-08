@@ -1,4 +1,4 @@
-import config from './../../shared/config.json';
+import config from './config.json';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io'
@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 // path for initialize static files
-const clientPath = __dirname + '/../client';
+const clientPath = __dirname + '/../../../client';
 app.use(express.static(clientPath));
 // send html page (client scripts) for user
 app.get('/', (req, res) => {
@@ -28,6 +28,7 @@ io.on('connection', (socket) => {
 
   })
   // send test message to all clients fucKYYEYE YYEYYE Y
+  io.emit('init', config);
   io.emit('sync', "none"); //{fuck: "ну и как член на вкус?", fuck2: 1}
 });
 // start server bruh
@@ -42,6 +43,7 @@ if (config.discord_bot) {
   });
 
   DiscordClient.on("ready", () => {
+    if (DiscordClient.user == null) return;
     console.log(DiscordClient.user.tag + " was running!");
   });
 
