@@ -3,6 +3,7 @@ import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io'
 import Discord from 'discord.js'
+import {Entity} from './entity'
 // some defines
 const app = express();
 const server = http.createServer(app);
@@ -48,7 +49,7 @@ if (config.discord_bot) {
   });
 
   DiscordClient.on("messageCreate", (message) => {
-    //message.channel.send("Huh?");
+    message.channel.send("Huh?");
   })
 
   DiscordClient.login(config.discord_bot_token);
