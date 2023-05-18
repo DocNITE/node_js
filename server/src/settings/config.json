@@ -1,0 +1,9 @@
+{
+    // host configuration
+    "hostname": "Life in Web",
+    "port": 5500,
+    "max_users": 16,
+    // discord bot configuration
+    "discord_bot": false,
+    "discord_bot_token": "" 
+}

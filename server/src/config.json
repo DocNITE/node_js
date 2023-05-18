@@ -1,7 +1,0 @@
-{
-    "hostname": "Life in Web",
-    "port": 5500,
-    "max_users": 16,
-    "discord_bot": true,
-    "discord_bot_token": "MTEwNDE0NDA4MjA1MTI4OTE5OA.GX6u4u.6c40dB8iinoEhw8zLB0eCnQERN-woC9hQj2ylg" 
-}

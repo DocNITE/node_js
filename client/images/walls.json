@@ -12,10 +12,10 @@
 		}
 	},
 	"meta": {
-		"image": "images/walls.png",
+		"image": "../images/walls.png",
 		"format": "RGBA8888",
 		"size": { "w": 256, "h": 256 },
-		"scale": 0.5
+		"scale": "0.5"
 	},
 	"animations": {
 		"wall": ["brick","brick_nvm"] 

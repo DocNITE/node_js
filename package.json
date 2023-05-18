@@ -4,9 +4,12 @@
   "description": "server-client",
   "main": "index.js",
   "scripts": {
-    "build": "cd server && npm run build && cd ../client && npm run build && cd ../",
+    "build-client": "cd client && npm run build",
+    "build-server": "cd server && npm run build",
+    "build": "npm run build-client && npm run build-server",
     "start": "cd server && npm run start",
-    "start-build": "npm run build && npm run start"
+    "start-build": "npm run build && npm run start",
+    "start-build-client": "npm run build-client && npm run start"
   },
   "author": "DocNITE",
   "license": "ISC",

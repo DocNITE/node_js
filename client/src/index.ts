@@ -16,43 +16,57 @@ const app = new PIXI.Application({
 });
  */
 
-/*
-const spritesheet = new PIXI.Spritesheet(
-	PIXI.BaseTexture.from(wallsAtlas.meta.image),
-	wallsAtlas
-);
-
-// Generate all the Textures asynchronously
-async () => {
-    await spritesheet.parse(); 
-}
-
-// spritesheet is ready to use!
-const anim = new PIXI.AnimatedSprite(spritesheet.animations.wall);
-
-// set the animation speed 
-anim.animationSpeed = 0.1666;
-
-// play the animation on a loop
-anim.play();
-
-// add it to the stage to render
-app.stage.addChild(anim);
-
-app.ticker.add((delta) => {
-    //console.log(delta);
-});
-*/
-
-let socket = io();
+let socket = io({reconnection: false});
 
 socket.on('sync', (data) => {
     console.log(data); 
     socket.emit('sync', data);
 })
 
+// Initialize, when client was connected
 socket.on('init', (data) => {
     document.title = data.hostname;
+
+    
+    const dwallsAtlas: PIXI.ISpritesheetData = wallsAtlas;
+
+    //const spritesheet = new PIXI.Spritesheet(
+    //    PIXI.BaseTexture.from(wallsAtlas.meta.image),
+    //    dwallsAtlas
+    //);
+
+    const spritesheet: any = PIXI.Assets.load<PIXI.Spritesheet>('./../images/walls.json');
+    
+    // Generate all the Textures asynchronously
+    //async () => {
+    //    await spritesheet.parse(); 
+    //}
+
+    // spritesheet is ready to use!
+   //let aniInfo: any = spritesheet.animations["wall"];
+   // блять эта хуйня не может прочитать анимации. Че за нах нахуй? Сукааааа!
+    //const anim = new PIXI.AnimatedSprite(spritesheet.animations["wall"]);
+    console.log(spritesheet);
+    console.log(spritesheet.animations);
+    const anim = new PIXI.AnimatedSprite(spritesheet.animations.wall);
+    
+    // set the animation speed 
+    anim.animationSpeed = 0.1666;
+    
+    // play the animation on a loop
+    anim.play();
+    
+    // add it to the stage to render
+    app.stage.addChild(anim);
+    
+    app.ticker.add((delta) => {
+        //console.log(delta);
+    });
+})
+
+socket.on('disconnect', (reason) => {
+    console.log("Client network was closed!");
+    socket.close();
 })
 
 //const socket = new WebSocket("ws://127.0.0.1:5500");

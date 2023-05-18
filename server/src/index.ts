@@ -1,8 +1,8 @@
-import config from './config.json';
+import config from './settings/config.json';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io'
-import Discord from 'discord.js'
+import { Discord } from './discord/discord'
 import {Entity} from './entity'
 // some defines
 const app = express();
@@ -37,23 +37,13 @@ server.listen(config.port, () => {
   console.log(`Server running! Join at http://localhost:${config.port}/ for debug`);
 });
 
-// discord bot
-if (config.discord_bot) {
-  const DiscordClient = new Discord.Client({ 
-    intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.DirectMessages] 
-  });
+// Discord bot
+Discord.initialize();
 
-  DiscordClient.on("ready", () => {
-    if (DiscordClient.user == null) return;
-    console.log(DiscordClient.user.tag + " was running!");
-  });
 
-  DiscordClient.on("messageCreate", (message) => {
-    message.channel.send("Huh?");
-  })
 
-  DiscordClient.login(config.discord_bot_token);
-}
+
+
 /*
 const http = require('http');
 const fs = require('fs');
