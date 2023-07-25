@@ -5,5 +5,8 @@
     "max_users": 16,
     // discord bot configuration
     "discord_bot": false,
-    "discord_bot_token": "" 
+    "discord_bot_token": "",
+    "discord_client_id": "",
+    "discord_guild_id": ""
+    
 }
