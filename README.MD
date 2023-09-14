@@ -1,3 +1,7 @@
+What is it?
+It's my first (or not) attempt for create web application (web server + frontend sied (aka server/client)). 
+But, for some reason, i drop it. There was a few dirty moments, what i dont like...
+
 # How to build?
 1. Clone project
 2. Run `npm i` in CLI
